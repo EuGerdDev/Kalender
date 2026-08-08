@@ -1,0 +1,393 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #333;
+}
+
+
+/* =========================
+   Monats- und Jahresauswahl
+   ========================= */
+
+#monthselection,
+#yearselection {
+    padding: 9px 12px;
+    margin-right: 6px;
+
+    border: 1px solid #cfd6df;
+    border-radius: 5px;
+
+    background: white;
+    color: #333;
+
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#monthselection:hover,
+#yearselection:hover {
+    border-color: #2f80ed;
+}
+
+#monthselection:focus,
+#yearselection:focus {
+    outline: none;
+    border-color: #2f80ed;
+    box-shadow: 0 0 0 2px rgba(47, 128, 237, 0.15);
+}
+
+
+/* =========================
+   Monat / Jahr Überschrift
+   ========================= */
+
+#month-year {
+    margin: 20px 0 10px 0;
+
+    color: #2f80ed;
+    font-size: 28px;
+    position: absolute;
+    top: 40px;
+}
+
+
+/* =========================
+   Kalender
+   ========================= */
+
+#selectedMonthDaysContainer {
+    position: relative;
+    width: 700px;
+    min-height: 550px;
+    margin-top: 55px;
+
+    border-radius: 6px;
+    background: white;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+}
+
+
+/* Wochentage */
+
+.weekdayname {
+    position: absolute;
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+    top: 0;
+
+    text-align: center;
+    font-weight: bold;
+
+    background: #2f80ed;
+    color: white;
+
+    border-right: 1px solid rgba(255,255,255,.3);
+    box-sizing: border-box;
+}
+
+.weekdayname:last-child {
+    border-right: none;
+}
+
+
+/* Tage */
+
+.day {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+
+    padding: 6px;
+    box-sizing: border-box;
+
+    border: 1px solid #dcdcdc;
+    background: #fafafa;
+
+    border-radius: 2px;
+
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+
+    transition: .2s;
+    cursor: pointer;
+}
+
+.day:hover {
+    background: #eaf3ff;
+    border-color: #2f80ed;
+    transform: scale(1.03);
+}
+
+.day.today {
+    background: #2f80ed;
+    color: white;
+    border-color: #2f80ed;
+}
+
+.day.selected {
+    background: #34c759;
+    color: white;
+    border-color: #34c759;
+}
+
+
+/* =========================
+   Tagesansicht
+   ========================= */
+
+#selectedDayContainer {
+    position: absolute;
+    right: 300px;
+    top: 80px;
+
+    width: 350px;
+
+    padding: 20px;
+
+    background: white;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+
+    box-sizing: border-box;
+}
+
+
+/* Ausgewähltes Datum */
+
+#day {
+    margin: 0 0 20px 0;
+    padding-bottom: 12px;
+
+    color: #2f80ed;
+
+    font-size: 24px;
+
+    border-bottom: 2px solid #eaf3ff;
+}
+
+
+/* =========================
+   Kategorien
+   ========================= */
+
+#selectedDayContainer h3 {
+    margin: 18px 0 8px 0;
+    padding: 7px 10px;
+
+    background: #f4f7fb;
+
+    border-left: 4px solid #2f80ed;
+    border-radius: 3px;
+
+    color: #444;
+    font-size: 16px;
+}
+
+
+/* Container für Einträge */
+
+#selectedDayBirthdays,
+#selectedDayTasks,
+#selectedDayAppointments,
+#selectedDayActivities {
+    min-height: 10px;
+    margin-bottom: 12px;
+}
+
+
+/* Einzelne Einträge */
+
+#selectedDayBirthdays > *,
+#selectedDayTasks > *,
+#selectedDayAppointments > *,
+#selectedDayActivities > * {
+    padding: 8px 10px;
+    margin-bottom: 5px;
+
+    background: #fafafa;
+
+    border: 1px solid #e2e2e2;
+    border-radius: 4px;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   Eingabebereich
+   ========================= */
+
+#selectedDayContainer > div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+
+    margin-top: 22px;
+    padding-top: 18px;
+
+    border-top: 1px solid #e1e1e1;
+}
+
+
+/* Texteingabe */
+
+#name {
+    flex: 1;
+    min-width: 140px;
+
+    padding: 9px 10px;
+
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+#name:focus {
+    outline: none;
+
+    border-color: #2f80ed;
+
+    box-shadow: 0 0 0 2px rgba(47, 128, 237, 0.12);
+}
+
+
+/* Auswahl für Geburtstag / Aufgabe / Termin / Aktivität */
+
+#selectedDayContainer select {
+    padding: 9px 10px;
+
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+
+    background: white;
+
+    font-size: 14px;
+    color: #333;
+
+    cursor: pointer;
+}
+
+#selectedDayContainer select:focus {
+    outline: none;
+    border-color: #2f80ed;
+}
+
+
+/* =========================
+   Hinzufügen Button
+   ========================= */
+
+#selectedDayContainer button {
+    padding: 9px 15px;
+
+    border: none;
+    border-radius: 4px;
+
+    background: #2f80ed;
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+#selectedDayContainer button:hover {
+    background: #1769c2;
+}
+
+#selectedDayContainer button:active {
+    transform: translateY(1px);
+}
+.day-number {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.calendar-entries {
+    height: 58px;
+    margin-top: 3px;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.calendar-entry {
+    height: 14px;
+    line-height: 14px;
+
+    padding: 0 3px;
+    margin-bottom: 2px;
+
+    font-size: 10px;
+    font-weight: normal;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    box-sizing: border-box;
+}
+
+.calendar-entry.birthday {
+    background: #ffe5e5;
+    color: #c62828;
+}
+
+.calendar-entry.task {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.calendar-entry.appointment {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.calendar-entry.activity {
+    background: #fff3e0;
+    color: #ef6c00;
+}
+#selectedDayContainer .calendar-delete {
+    float: right;
+
+    padding: 0;
+    margin: 0;
+
+    width: 20px;
+    height: 20px;
+
+    border: none;
+    border-radius: 4px;
+
+    background: transparent;
+    color: #c62828;
+
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 20px;
+
+    cursor: pointer;
+}
+
+#selectedDayContainer .calendar-delete:hover {
+    background: #ffe5e5;
+    color: #a51f1f;
+}
+#selectedDayContainer h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
