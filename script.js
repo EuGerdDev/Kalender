@@ -54,6 +54,11 @@ let calendar = {
         
     ]
 }
+document.onkeydown = function(event) {
+    if (event.key === "Enter") {
+        add();
+    }
+}
 function generateYears() {
     for (let index = 0; index < 10; index++) {
         calendar.years.push(
@@ -267,7 +272,7 @@ document.getElementById("activityCount").textContent = activityCount;
 function selectAddType(type) {
     addType = type;
 }
-function add(type) {
+function add() {
     console.log("addType:", addType);
     if(addType == "Geburtstag"){
         addBirthday()
@@ -328,8 +333,17 @@ function addActivity() {
     )
     document.getElementById("name").value = "";
 }
-function deleteBirthday(index) {
-    calendar.years[selectedYear].months[month - 1].days[day].birthdays[index].active = false;
+function deleteBirthday(birthdayindex) {
+    for (let index = 0; index < calendar.years.length; index++) {
+        let birthdaysArray = calendar.years[index].months[month - 1].days[day].birthdays;
+        for (let ii = 0; ii < birthdaysArray.length; ii++) {
+            let birthday = birthdaysArray[ii];
+            if(birthday.name == calendar.years[selectedYear].months[month - 1].days[day].birthdays[birthdayindex].name){
+                birthday.active = false;
+                break;
+            }
+        }
+    }
 
     localStorage.setItem("calendar", JSON.stringify(calendar));
 
@@ -338,8 +352,8 @@ function deleteBirthday(index) {
 }
 
 function deleteTask(index) {
+    
     calendar.years[selectedYear].months[month - 1].days[day].tasks[index].active = false;
-
     localStorage.setItem("calendar", JSON.stringify(calendar));
 
     updateValues();
